@@ -20,7 +20,14 @@ ehthumbs.db
 *.log
 logs/
 
-# Temporary files (general)
+# Temporary files
+
+# MongoDB data volumes
+services/mongo-db/volumes/
+
+# NATS data and test virtual environment
+services/nats/volumes/
+services/nats/tests/venv/ (general)
 *.tmp
 *.temp
 temp/
