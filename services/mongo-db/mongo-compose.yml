@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: helm-mongo-db
+    ports:
+      - "0.0.0.0:27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_DB_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_DB_PASSWORD}
+    volumes:
+      - ./volumes/mongo-data:/data/db
+    networks:
+      - helm-net
+    env_file:
+      - ../../.env # Point to the root .env file
+    restart: unless-stopped
+
+networks:
+  helm-net:
+    external: true

@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  nats-dashboard:
+    image: mdawar/nats-dashboard:latest
+    container_name: helm-nats-dashboard
+    ports:
+      - "10002:80" # NATS Dashboard internally uses Caddy on port 80
+    environment:
+      - NATS_HOST=404ops01
+    volumes:
+      - ./config.json:/srv/config.json # Mount the configuration file
+      - ./custom_caddyfile:/etc/caddy/Caddyfile # Mount the custom Caddyfile
+    networks:
+      - helm-net
+    restart: unless-stopped
+
+networks:
+  helm-net:
+    external: true

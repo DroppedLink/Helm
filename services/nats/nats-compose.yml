@@ -7,19 +7,17 @@ services:
     image: nats:2.10
     container_name: helm-nats-bus
     ports:
-      - "4222:4222" # Client port
-      - "8222:8222" # HTTP monitoring port
+      - "0.0.0.0:4222:4222" # Client port
+      - "0.0.0.0:8222:8222" # HTTP monitoring port
     volumes:
       - /share/Dockers/Helm/services/nats/config/nats.conf:/etc/nats/nats.conf:ro
-      - nats_data:/data/nats
+      - ./volumes/nats-data:/data/nats
     command: "-c /etc/nats/nats.conf"
     networks:
       - helm-net
     restart: unless-stopped
 
-volumes:
-  nats_data:
-    driver: local
+
 
 networks:
   helm-net:

@@ -1,0 +1,21 @@
+:80 {
+	log {
+		output stdout
+		level INFO
+	}
+
+    # Add CORS headers for all responses from this site
+    # header {
+    #     Access-Control-Allow-Origin "*"
+    #     Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    #     Access-Control-Allow-Headers "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range"
+    # }
+
+	root * /srv
+	file_server
+
+	route /proxy/* {
+		uri strip_prefix /proxy
+		reverse_proxy {$NATS_HOST}:8222
+	}
+}

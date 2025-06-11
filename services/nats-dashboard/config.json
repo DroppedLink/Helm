@@ -1,0 +1,7 @@
+{
+  "server": {
+    "name": "Helm NATS Server",
+    "url": "http://404ops01:10002/proxy/"
+  },
+  "hideServerInput": true
+}
