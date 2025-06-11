@@ -1,1 +1,27 @@
+# Environment variables
 *.env
+
+# Python Virtual Environment for the project
+mcp-env/
+
+# IDE configuration files
+.vscode/
+.idea/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Log files (general)
+*.log
+logs/
+
+# Temporary files (general)
+*.tmp
+*.temp
+temp/
+tmp/
